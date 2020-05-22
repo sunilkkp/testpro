@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ServicesService } from 'src/app/services.service';
 import { Router } from '@angular/router';
 
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DeleteuserComponent implements OnInit {
 
-  constructor(private http: HttpClient, public api: ServicesService, public router: Router) { }
+  constructor( public api: ServicesService, public router: Router) { }
 
   user: any = {};
 

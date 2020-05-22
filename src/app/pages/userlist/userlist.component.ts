@@ -25,22 +25,15 @@ export class UserlistComponent implements OnInit {
     .getUsers()
     .subscribe((data:any) => {
       this.users = data.data;
-      console.log(this.users);
     });
   }
 
-  userDelete(user){
-    this.api.deleteUser(user.id)
+  userDelete(id){
+    this.api.deleteUser(id)
       .subscribe( data => {
-        console.log(data)
+        this.users = this.users.filter(user => user.id !==  id);
+        console.log(id)
         alert('user deleted');
     })
   }
-  // userDelete(id: number){
-  //   if(confirm('Are You Sure to delete??')){
-  //     this.api.deleteUser(id).subscribe(res => {
-  //       console.log(res)
-  //     })
-  //   }
-  // }
 }

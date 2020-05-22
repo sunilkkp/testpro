@@ -24,7 +24,7 @@
                 <td class="text-center"><img src="{{ user.avatar }}" alt="" class="img-size"></td>
                 <td>
                     <a class="btn btn-primary btn_edit" [routerLink]="['/edit-user', user.id]"> Edit <i class="fa fa-edit"></i></a> &nbsp;
-                    <a (click)="userDelete(user)" class="btn btn-danger delete_btn btn_edit"> Delete <i class="fa fa-trash"></i></a>
+                    <a (click)="userDelete(user.id)" class="btn btn-danger delete_btn btn_edit"> Delete <i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         </tbody>

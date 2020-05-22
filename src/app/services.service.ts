@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { User } from './model/user';
 
 
@@ -53,26 +53,21 @@ export class ServicesService {
       headers: new HttpHeaders({'Content-Type' : 'application/json' })
     };
     return this.http.put(`${this.dataUrl}/${user.id}`, user, httpOptions).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
-      catchError(this.handleError)
+      map((data: any) => {
+        return data;
+      }), catchError( error => {
+        return throwError( 'Something went wrong!' );
+      })
     );
-  }
-
-  private handleError(err: HttpErrorResponse) { 
-    let errorMessage = '';
-    if (err.error instanceof ErrorEvent) {
-      errorMessage = `An error occurred: ${err.error.message}`;
-    } else {
-      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
-    }
-    console.error(errorMessage);
-    return throwError(errorMessage);
   }
 
   deleteUser(id: number): Observable<any> {
     return this.http.delete<any>(`${this.dataUrl}/${id}`).pipe(
-      tap(data => console.log(JSON.stringify(data))),
-      catchError(this.handleError)
+      map((data: any) => {
+        return data;
+      }), catchError( error => {
+        return throwError( 'Something went wrong!' );
+    })
     );
   }
   
