@@ -29,16 +29,19 @@ export class EdtiuserComponent implements OnInit {
  data: any = {}; 
   getUserData(): void{
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(`this.activatedRoute.snapshot.paramMap = ${JSON.stringify(this.activatedRoute.snapshot.paramMap)}`);
+    // console.log(`this.activatedRoute.snapshot.paramMap = ${JSON.stringify(this.activatedRoute.snapshot.paramMap)}`);
     this.api.userGetData(id).subscribe(data => {
-    console.log(data.data)
+      this.data = data.data
     });
   }
 
   formSubmit(): void{
-    this.api.updateUser(this.data).subscribe(() => this.goBack());
+    this.api.updateUser(this.data).subscribe(data => {
+    console.log(data)
+    this.router.navigate(['/user-list'])
+    });
   }
-  goBack(): void{
+  goBack(){
    this.router.navigate(['/user-list'])
   }
 

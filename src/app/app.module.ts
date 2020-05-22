@@ -7,14 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserlistComponent } from './pages/userlist/userlist.component';
 import { EdtiuserComponent } from './pages/edtiuser/edtiuser.component';
-import { DeleteuserComponent } from './pages/deleteuser/deleteuser.component';
+import { CreateuserComponent } from './pages/createuser/createuser.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserlistComponent,
     EdtiuserComponent,
-    DeleteuserComponent
+    CreateuserComponent
   ],
   imports: [
     BrowserModule,
